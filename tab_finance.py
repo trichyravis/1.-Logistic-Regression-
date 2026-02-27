@@ -101,7 +101,7 @@ def _credit_default():
             tn=np.sum((yp==0)&(y==0)); fn=np.sum((yp==0)&(y==1))
             tprs.append(tp/(tp+fn+1e-9)); fprs.append(fp/(fp+tn+1e-9))
         fprs_a = np.array(fprs); tprs_a = np.array(tprs)
-        idx = np.argsort(fprs_a); auc = np.trapz(tprs_a[idx], fprs_a[idx])
+        idx = np.argsort(fprs_a); auc = np.trapezoid(tprs_a[idx], fprs_a[idx])
 
         metric_row([
             ("Default Rate", f"{y.mean():.3f}", None),
@@ -157,7 +157,7 @@ def _plot_credit(y, p_hat, fprs, tprs):
     axes[0].legend(facecolor="#112240", labelcolor="#e6f1ff", fontsize=8, edgecolor="#1e3a5f")
     _sax(axes[0])
 
-    auc = np.trapz(tprs, fprs)
+    auc = np.trapezoid(tprs, fprs)
     axes[1].plot(fprs, tprs, color="#FFD700", lw=2.5, label=f"AUC={auc:.3f}")
     axes[1].plot([0,1],[0,1], color="#8892b0", lw=1, ls="--"); axes[1].fill_between(fprs, tprs, alpha=0.12, color="#FFD700")
     axes[1].set(xlabel="FPR", ylabel="TPR"); axes[1].xaxis.label.set_color("#8892b0"); axes[1].yaxis.label.set_color("#8892b0")
@@ -405,7 +405,7 @@ def _loan_approval():
             fn=np.sum((yp==0)&(y==1)); tn=np.sum((yp==0)&(y==0))
             tprs_a.append(tp/(tp+fn+1e-9)); fprs_a.append(fp/(fp+tn+1e-9))
         fprs_s=np.array(fprs_a); tprs_s=np.array(tprs_a)
-        idx=np.argsort(fprs_s); auc=np.trapz(tprs_s[idx],fprs_s[idx])
+        idx=np.argsort(fprs_s); auc=np.trapezoid(tprs_s[idx],fprs_s[idx])
         gini = 2*auc - 1
 
         metric_row([
