@@ -11,9 +11,10 @@ import matplotlib.pyplot as plt
 
 from components import (
     render_card, ib, render_ib, fml, bdg, hl, gt, rt2,
-    txt_s, p, two_col, section_heading, metric_row, stat_box, four_col,
+    txt_s, two_col, section_heading, metric_row, stat_box, four_col,
     S, FH, FB, FM, TXT, NO_SEL
 )
+from components import p as para   # alias avoids clash with local variable p
 
 CODES = {
     "MLE from Scratch": '''import numpy as np
@@ -225,7 +226,7 @@ def _f(t):
 
 def tab_code():
     render_card("🐍 Python Reference Code — Logistic Regression",
-        p(f'Complete {hl("production-ready Python")} implementations. Choose from MLE from scratch, '
+        para(f'Complete {hl("production-ready Python")} implementations. Choose from MLE from scratch, '
           f'statsmodels (full output), sklearn pipeline, and diagnostics.')
         + two_col(
             ib(f'{bdg("MLE from scratch","gold")} Newton-Raphson, Hessian SE, Wald tests<br>'
