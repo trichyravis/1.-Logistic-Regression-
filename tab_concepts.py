@@ -7,6 +7,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+from tab_explainers import explainer_concepts
 from components import (
     render_card, ib, render_ib, fml, bdg, hl, gt, rt2, org, pur,
     lb_t, txt_s, p, steps_html, two_col, three_col, four_col,
@@ -64,6 +65,7 @@ def tab_concepts():
            f'{hl("Green region")} = predicted positive class. '
            f'{rt2("Red region")} = predicted negative class.', "blue")
     )
+    explainer_concepts()
     col1, col2, col3 = st.columns(3)
     b0 = col1.slider("β₀ (Intercept)", -4.0, 4.0, 0.0, 0.25, key="sig_b0")
     b1 = col2.slider("β₁ (Slope)", -3.0, 3.0, 1.0, 0.25, key="sig_b1")

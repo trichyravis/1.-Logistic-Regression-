@@ -9,6 +9,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+from tab_explainers import explainer_code
 from components import (
     render_card, ib, render_ib, fml, bdg, hl, gt, rt2,
     txt_s, two_col, section_heading, metric_row, stat_box, four_col,
@@ -238,6 +239,7 @@ def tab_code():
         )
     )
 
+    explainer_code()
     section = st.selectbox("Code Section", list(CODES.keys()), key="code_sec")
     st.html(fml(CODES[section]))
 

@@ -9,6 +9,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+from tab_explainers import explainer_finance
 from components import (
     render_card, ib, render_ib, fml, bdg, hl, gt, rt2, org, pur,
     lb_t, txt_s, p, steps_html, two_col, three_col,
@@ -38,6 +39,7 @@ def _fit_logistic(X, y):
 
 
 def tab_finance():
+    explainer_finance()
     cases = ["💳 Credit Default Prediction", "🔍 Fraud Detection",
              "📉 Credit Rating Downgrade", "🏦 Loan Approval Model"]
     case = st.radio("Select Case Study", cases, horizontal=True, key="fin_case")

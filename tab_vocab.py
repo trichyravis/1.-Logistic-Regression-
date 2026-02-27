@@ -2,6 +2,7 @@
 tab_vocab.py — Education Hub / Vocabulary for Logistic Regression
 """
 import streamlit as st
+from tab_explainers import explainer_vocab
 from components import (
     render_card, ib, render_ib, fml, bdg, hl, gt, rt2, org, pur,
     lb_t, txt_s, p, two_col, three_col, four_col,
@@ -292,6 +293,7 @@ def tab_vocab():
         )
     )
 
+    explainer_vocab()
     mode = st.radio("Section",["🃏 Concept Cards","📐 Formula Sheet","📝 MCQ Quiz","🗺 Decision Guide"],horizontal=True,key="vh_mode")
 
     if "Concept Cards" in mode:

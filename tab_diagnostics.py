@@ -10,6 +10,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 
+from tab_explainers import explainer_diagnostics
 from components import (
     render_card, ib, render_ib, fml, bdg, hl, gt, rt2, org, pur,
     lb_t, txt_s, p, steps_html, two_col, three_col,
@@ -99,6 +100,7 @@ def tab_diagnostics():
            f'{hl("VIF")}, influence diagnostics, and deviance residual analysis.', "blue")
     )
 
+    explainer_diagnostics()
     col1, col2 = st.columns(2)
     scenario = col1.selectbox("Scenario", [
         "Well-specified credit model",

@@ -10,6 +10,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 
+from tab_explainers import explainer_model
 from components import (
     render_card, ib, render_ib, fml, bdg, hl, gt, rt2, org, pur,
     lb_t, txt_s, p, steps_html, two_col, three_col, four_col,
@@ -62,6 +63,7 @@ def tab_model():
     )
 
     # Controls
+    explainer_model()
     col1, col2, col3, col4 = st.columns(4)
     n_firms   = col1.number_input("Number of firms", 50, 500, 200, 25, key="lr_n")
     base_rate = col2.slider("Base default rate (%)", 5, 40, 15, 1, key="lr_rate") / 100
