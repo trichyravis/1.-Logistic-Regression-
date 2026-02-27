@@ -11,17 +11,27 @@ from components import (
 def _f(t):
     return f'<span style="font-family:{FM};font-size:.83rem;color:#64ffda;-webkit-text-fill-color:#64ffda">{t}</span>'
 
-def _ccard(icon, title, tc, bc, bg, items):
-    rows = "".join(
-        f'<div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;{NO_SEL}">'
-        f'{it["badge"]}<span style="color:#e6f1ff;-webkit-text-fill-color:#e6f1ff;'
-        f'font-family:{FB};font-size:.88rem">{it["text"]}</span></div>'
-        for it in items)
-    return (f'<div style="background:{bg};border-left:4px solid {bc};border-radius:10px;'
-            f'padding:18px 18px 14px;height:100%;user-select:none;-webkit-user-select:none">'
-            f'<div style="font-family:{FH};font-size:1.05rem;color:{tc};'
-            f'-webkit-text-fill-color:{tc};font-weight:700;margin-bottom:13px">{icon} {title}</div>'
-            f'{rows}</div>')
+def _ccard(icon, title, title_color, border_color, bg_color, items, **kwargs):
+    rows = ""
+    for it in items:
+        rows += (
+            '<div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:9px;'
+            'user-select:none;-webkit-user-select:none">'
+            + it["badge"]
+            + ('<span style="color:#e6f1ff;-webkit-text-fill-color:#e6f1ff;'
+               'font-family:' + FB + ';font-size:.88rem">' + it["text"] + '</span></div>')
+        )
+    return (
+        '<div style="background:' + bg_color + ';border-left:4px solid ' + border_color + ';'
+        'border-radius:10px;padding:18px 18px 14px;height:100%;'
+        'user-select:none;-webkit-user-select:none">'
+        '<div style="font-family:' + FH + ';font-size:1.05rem;color:' + title_color + ';'
+        '-webkit-text-fill-color:' + title_color + ';font-weight:700;margin-bottom:13px">'
+        + icon + ' ' + title
+        + '</div>'
+        + rows
+        + '</div>'
+    )
 
 def _row(label, value):
     return (f'<div style="display:flex;justify-content:space-between;padding:4px 0;'
